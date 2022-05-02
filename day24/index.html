@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Javascript example</h2>
+    <script type = "text/javascript">
+        class User{
+            // static stateName = 'Assam';
+            constructor(name,contact){
+                this.name = name;
+                this.contact = contact;
+            }
+        }
+       let user1 = {name : 'Alex', contact: {phone: "7087264668", email : "vishnuborah@gmail.com"}}
+       let user2 = {name : 'Bruce'}
+    
+       let userArray = [];
+       userArray.push(user1);
+       userArray.push(user2);
+       userArray.forEach((item) => { 
+        document.write(`<h4>Name = ${item.name}, 
+            Phone = ${item?.contact?.phone}, Email = ${item?.contact?.email}</h4>`);
+       });
+    </script>
+</body>
+</html>
