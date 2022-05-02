@@ -99,10 +99,10 @@
             let input1 = document.getElementById("i1");
             let input2 = document.getElementById("i2");
             let ele = document.getElementById("i3");
-            if(parseInt(input1.value) >= parseInt(input2.value)){
-                result = parseInt(input1.value) - parseInt(input2.value);
+            if(parseFloat(input1.value) >= parseFloat(input2.value)){
+                result = parseFloat(input1.value) - parseFloat(input2.value);
             }else{
-                result = parseInt(input2.value) - parseInt(input1.value);
+                result = parseFloat(input2.value) - parseFloat(input1.value);
             }
             console.log(result);
             ele.value = result;
@@ -111,7 +111,7 @@
             let input1 = document.getElementById("i1");
             let input2 = document.getElementById("i2");
             let ele = document.getElementById("i3");
-            let result = parseInt(input1.value) * parseInt(input2.value);
+            let result = parseFloat(input1.value) * parseFloat(input2.value);
             console.log(result);
             ele.value = result;
             
@@ -120,7 +120,7 @@
             let input1 = document.getElementById("i1");
             let input2 = document.getElementById("i2");
             let ele = document.getElementById("i3");
-            let result = parseInt(input1.value) / parseInt(input2.value);
+            let result = parseFloat(input1.value) / parseFloat(input2.value);
             console.log(result);
             ele.value = result;
             
