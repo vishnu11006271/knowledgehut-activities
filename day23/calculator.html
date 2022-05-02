@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <div>
+        <h2>Simple Calculator</h2>
+        <form action = "/" method = "post" >
+            <table>
+                <tr>
+                    <td><label>N1</label>
+                    <input type = "text" name = "n1" autocomplete="off" id = "i1" onkeydown="return digits(event)">
+                    <span id="s1" style="color: red;"></span></td>
+                </tr>
+    
+                <tr>
+                    <td><label>N2</label>
+                    <input type = "text" name = "n2" autocomplete="off" id = "i2" onkeydown="return digits(event)" >
+                    <span id="s2" style="color: red;"></span></td>
+                </tr>
+    
+                <tr>
+                    <td><label>Result = </label>
+                    <!-- <input type = "text" name = "n3" id = "i3" onkeydown="return add(event)" disabled> -->
+                    <span id="s3" style="color: red;">
+                    </span></td>
+                </tr>
+                <br />           
+                
+            </table>
+            <div>
+                
+                <button type="button" onclick="add(event)">Add</button>
+                <button type="button" onclick="sub(event)">Sub</button>
+                <button type="button" onclick="mul(event)">Mul</button>
+                <button type="button" onclick="div(event)">Div</button>
+                <input type="reset" value="reset">
+            
+            </div>
+        </form>
+    </div>
+    <script type = "text/javascript">
+       function digits(e) {
+           
+           let exp = /[0-9\.]/;
+           let count=0;
+           if(e.keyCode == 46){
+               count=count+1;
+               
+           }
+           if(count>1){
+               flag = false;
+           }
+           let value = e.key;
+           let flag = exp.test(value); 
+           let ele = document.getElementById("s1");
+           let ele1 = document.getElementById("s2");
+           
+           
+           if (flag){
+                ele.innerHTML = '';
+                ele1.innerHTML = '';
+            }
+           else{
+                ele.innerHTML = "You need to enter only digits";
+                ele1.innerHTML = "You need to enter only digits";
+            }
+
+            return flag;
+        }
+        function add(e){
+            let input1 = document.getElementById("i1");
+            let input2 = document.getElementById("i2");
+            let ele = document.getElementById("s3");
+            let result = parseInt(input1.value) + parseInt(input2.value);
+            console.log(result);
+            ele.innerHTML = result;
+            
+        }
+        function sub(e){
+            let input1 = document.getElementById("i1");
+            let input2 = document.getElementById("i2");
+            let ele = document.getElementById("s3");
+            if(parseInt(input1.value) >= parseInt(input2.value)){
+                result = parseInt(input1.value) - parseInt(input2.value);
+            }else{
+                result = parseInt(input2.value) - parseInt(input1.value);
+            }
+            console.log(result);
+            ele.innerHTML = result;
+        }
+        function mul(e){
+            let input1 = document.getElementById("i1");
+            let input2 = document.getElementById("i2");
+            let ele = document.getElementById("s3");
+            let result = parseInt(input1.value) * parseInt(input2.value);
+            console.log(result);
+            ele.innerHTML = result;
+            
+        }
+        function div(e){
+            let input1 = document.getElementById("i1");
+            let input2 = document.getElementById("i2");
+            let ele = document.getElementById("s3");
+            let result = parseInt(input1.value) / parseInt(input2.value);
+            console.log(result);
+            ele.innerHTML = result;
+            
+        }
+    </script>
+</body>
+</html>
