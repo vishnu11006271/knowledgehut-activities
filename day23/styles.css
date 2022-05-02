@@ -1,0 +1,17 @@
+h2{
+    text-align: center;
+    color: red;
+    background-color: blueviolet;
+    border-radius: 25px;
+    margin-left: 580px;
+    margin-right: 580px;
+    padding: 1%;
+}
+form{
+    
+    background-color: aqua;
+    justify-content: center;
+    margin-left: 600px;
+    margin-right: 600px;
+    border-radius: 25px;
+}

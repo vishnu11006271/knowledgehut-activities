@@ -5,34 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="styles.css" rel='stylesheet' type='text/css'>
    
 </head>
 <body>
     <div>
         <h2>Simple Calculator</h2>
-        <form action = "/" method = "post" >
-            <table>
+        <form action = "/" method = "post" align = "center">
+            <table align = "center">
                 <tr>
-                    <td><label>N1</label>
-                    <input type = "text" name = "n1" autocomplete="off" id = "i1" onkeydown="return digits(event)">
-                    <span id="s1" style="color: red;"></span></td>
+                    <td><label>Number1</label></td>
+                    <td><input type = "text" name = "n1" autocomplete="off" id = "i1" onkeydown="return digits1(event)"></td>
+                    <span id="s1" style="color: red;"></span>
                 </tr>
     
                 <tr>
-                    <td><label>N2</label>
-                    <input type = "text" name = "n2" autocomplete="off" id = "i2" onkeydown="return digits(event)" >
-                    <span id="s2" style="color: red;"></span></td>
+                    <td><label>Number2</label></td>
+                    <td><input type = "text" name = "n2" autocomplete="off" id = "i2" onkeydown="return digits2(event)" ></td>
+                    <span id="s2" style="color: red;"></span>
                 </tr>
     
                 <tr>
-                    <td><label>Result = </label>
-                    <!-- <input type = "text" name = "n3" id = "i3" onkeydown="return add(event)" disabled> -->
-                    <span id="s3" style="color: red;">
-                    </span></td>
+                    <td><label>Result is</label></td>
+                    <td><input type = "text" name = "n3" id = "i3" disabled></td>
+                    <span id="s3" style="color: red;"></span>
                 </tr>
-                <br />           
+                <br />
+                           
                 
             </table>
+            <br />
             <div>
                 
                 <button type="button" onclick="add(event)">Add</button>
@@ -45,71 +47,82 @@
         </form>
     </div>
     <script type = "text/javascript">
-       function digits(e) {
-           
+       function digits1(e) {
            let exp = /[0-9\.]/;
            let count=0;
-           if(e.keyCode == 46){
-               count=count+1;
-               
-           }
-           if(count>1){
-               flag = false;
-           }
            let value = e.key;
            let flag = exp.test(value); 
            let ele = document.getElementById("s1");
-           let ele1 = document.getElementById("s2");
-           
-           
-           if (flag){
+            if (flag){
                 ele.innerHTML = '';
-                ele1.innerHTML = '';
             }
            else{
                 ele.innerHTML = "You need to enter only digits";
-                ele1.innerHTML = "You need to enter only digits";
+            }
+            
+            return flag; 
+            limitDecimalPlaces(e,count); 
+        }
+        function limitDecimalPlaces(e, count) {
+            if (e.target.value.indexOf('.') == -1) { return; }
+            if ((e.target.value.length - e.target.value.indexOf('.')) > count) {
+                e.target.value = parseFloat(e.target.value).toFixed(count);
+                }
+            
+            }
+        function digits2(e) {
+           let exp = /[0-9\.]/;
+           let count=0;
+           let value = e.key;
+           let flag = exp.test(value); 
+           let ele = document.getElementById("s2");
+           if (flag){
+                ele.innerHTML = '';
+            }
+           else{
+                ele.innerHTML = "You need to enter only digits";
             }
 
             return flag;
+            limitDecimalPlaces(e,count);
         }
-        function add(e){
+        function add(){
             let input1 = document.getElementById("i1");
             let input2 = document.getElementById("i2");
-            let ele = document.getElementById("s3");
-            let result = parseInt(input1.value) + parseInt(input2.value);
+            let ele = document.getElementById("i3");
+            let result = parseFloat(input1.value) + parseFloat(input2.value);
             console.log(result);
-            ele.innerHTML = result;
+            ele.value = result;
             
         }
-        function sub(e){
+        function sub(){
             let input1 = document.getElementById("i1");
             let input2 = document.getElementById("i2");
-            let ele = document.getElementById("s3");
+            let ele = document.getElementById("i3");
             if(parseInt(input1.value) >= parseInt(input2.value)){
                 result = parseInt(input1.value) - parseInt(input2.value);
             }else{
                 result = parseInt(input2.value) - parseInt(input1.value);
             }
             console.log(result);
-            ele.innerHTML = result;
+            ele.value = result;
         }
-        function mul(e){
+        function mul(){
             let input1 = document.getElementById("i1");
             let input2 = document.getElementById("i2");
-            let ele = document.getElementById("s3");
+            let ele = document.getElementById("i3");
             let result = parseInt(input1.value) * parseInt(input2.value);
             console.log(result);
-            ele.innerHTML = result;
+            ele.value = result;
             
         }
-        function div(e){
+        function div(){
             let input1 = document.getElementById("i1");
             let input2 = document.getElementById("i2");
-            let ele = document.getElementById("s3");
+            let ele = document.getElementById("i3");
             let result = parseInt(input1.value) / parseInt(input2.value);
             console.log(result);
-            ele.innerHTML = result;
+            ele.value = result;
             
         }
     </script>
