@@ -53,6 +53,7 @@
            let value = e.key;
            let flag = exp.test(value); 
            let ele = document.getElementById("s1");
+           limitDecimalPlaces(e, 1);
             if (flag){
                 ele.innerHTML = '';
             }
@@ -61,7 +62,7 @@
             }
             
             return flag; 
-            limitDecimalPlaces(e,count); 
+             
         }
         function limitDecimalPlaces(e, count) {
             if (e.target.value.indexOf('.') == -1) { return; }
@@ -76,6 +77,7 @@
            let value = e.key;
            let flag = exp.test(value); 
            let ele = document.getElementById("s2");
+           limitDecimalPlaces(e, 1);
            if (flag){
                 ele.innerHTML = '';
             }
@@ -84,7 +86,7 @@
             }
 
             return flag;
-            limitDecimalPlaces(e,count);
+            
         }
         function add(){
             let input1 = document.getElementById("i1");
