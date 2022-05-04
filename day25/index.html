@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Learning Javascript</h2>
+    </div>
+    <div id = "main"></div>
+    <script type = "text/javascript">
+        let number= Math.random();
+        document.write(`Number is ${number}<br />`);
+        number = number * 1000000;
+        number = Math.trunc(number);
+        number = number.toString();
+        let num =number.padStart(6,'0');
+        document.write(`OTP is ${num}`);
+        console.log(num);
+    </script>
+</body>
+</html>
