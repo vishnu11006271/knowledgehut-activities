@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Example on Canvas</h2>
+    <canvas id = 'c1' width = "800" height="800" style = 'border:solid 2px'></canvas>
+    <script type = 'text/javascript'>
+        // accessing canvas element
+        let c = document.getElementById('c1');
+        // call getContext('2d') on the element which gives you inbuilt methods of canvas
+        let ctx = c.getContext('2d');
+        for (var i = 0; i < 8; i++) {
+            for (var j = 0; j < 8; j++) {
+                ctx.beginPath();
+                ctx.fillStyle = ["black", "white"][(i + j) % 2];
+                ctx.fillRect(j * 100, i * 100, 100, 100);
+                ctx.closePath();
+            }
+        }
+    </script>
+</body>
+</html>
