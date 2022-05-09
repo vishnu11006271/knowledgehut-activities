@@ -1,0 +1,40 @@
+#main{
+    display: grid;
+    grid-template-columns: 300px;
+    position: relative;
+    left: 33%;
+    max-width: fit-content;
+    border: 5px solid blue;
+    padding: 50px;
+    background-color: aqua;
+    text-align: left;
+    border-radius: 20px;
+}
+#cartSize{
+    position: static;
+    border: 2px solid brown;
+    background-color: grey;
+    width: 85%;
+    padding: 20px;
+    margin: 2px;
+    justify-content: center;
+    border-radius: 20px;
+
+}
+#cart{
+    display:inline-block;
+    width: 84%;
+    height: auto;
+    vertical-align: center;
+    padding: 20px;
+    margin: 5px;
+    background-color: yellowgreen;
+    border: 2px solid black;
+    justify-content: center;
+    text-align: left;
+    border-radius: 20px;
+
+}
+h2{
+    text-decoration: underline;
+}

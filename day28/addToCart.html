@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styles.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div id="main"> <h2>Online kart</h2>
+    <div id = 'cartSize'>Cart size:  </div>
+    <div id = "cart"> Plese select products below: </div>
+    <script type = 'text/javascript'>
+        let products = ["Mobile", "Laptop", "Microwave", "Gyser"];
+        document.write(`<h3>Below are the list of items</h3>`);
+        document.write("<ul>");
+        products.forEach((item, index) => {
+            document.write(`<li>${item} <button onClick = "test(${index})">Add ${item}</button></li>`)
+        });
+        document.write("</ul>");
+        let cartItems = [];
+        let cart = document.getElementById('cart');
+        let cartSize = document.getElementById('cartSize');
+        
+        function test(index) {
+            let cartContent = "<ul>";
+            let item = products[index];
+            cartItems.push(`<li>${item}  <button onClick="del(${index})">Delete</button></li>`);
+            cart.innerHTML = `Items added to cart ${cartItems}`;
+            
+
+            cartSize.innerHTML = `Cart size: ${cartItems.length}`;
+            cartContent = cartItems +"</ul>";
+            
+        }
+        
+        function del(index){
+            let item = products[index];
+            cartItems.pop(item);
+            cart.innerHTML = `Items left in cart${cartItems}`;
+            cartSize.innerHTML = `Cart size: ${cartItems.length}`;
+            if(cartItems.length==0)
+            {
+                cart.innerHTML = `All items has been deleted, please select again`;
+            }
+            
+        }
+        
+        
+    </script>
+    </div>
+</body>
+</html>
