@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Generators example</h2>
+    <div id="gen">Next value: </div>
+    <button onclick="getData()">submit</button>
+    <script type = 'text/javascript'>
+        function *generatorEg(){
+            console.log('first line');
+            yield 5;
+            console.log('second line');
+            yield "hello world";
+            console.log('Third line');
+            yield 50;
+        }
+        let g = generatorEg();
+        function getData(){
+           let result = g.next();
+           let ele = document.getElementById('gen');
+           ele.innerHTML = "Next value: "+ result.value;
+       }
+    </script>
+</body>
+</html>

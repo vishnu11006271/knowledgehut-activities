@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="n1">
+        <input type="text" name="n2">
+        <button onclick="test(event)">submit</button>
+    </form>
+    <script type='text/javascript'>
+        let formEle = document.forms[0];
+        let r1 = formEle.n1;
+        let r2 = formEle.n2;
+        console.log(r1.value);
+        function test(e){
+            if(r2.value == "hi")
+            document.write("hello" + r1.value);
+        }
+        
+        
+    </script>
+</body>
+</html>
