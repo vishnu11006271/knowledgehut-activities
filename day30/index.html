@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Demo on Javascript collection</h2>
+    <div>Enter products
+        <input type="text" id="name">
+        <button onclick="add()">Save</button><span id ="s1"></span>
+        <br />
+        <button onclick="display()">Show set elements</button>
+    </div>
+
+    
+    <script type = "text/javascript">
+        let m = new Set();
+        
+        
+        function add(){
+            let ele = document.getElementById("name");
+            let s = document.getElementById("s1")
+            let v = ele.value;
+            let value = v.toLowerCase();
+            if(m.has(value)){
+                s.innerHTML = "Already exist";
+                ele.value = '';
+            }
+            else{
+                m.add(value);
+                
+                ele.value = '';
+            }
+            console.log("value: " +value);
+            
+        }
+        function display(){
+            document.write(`<p>Size of map: ${m.size}</p>`);
+            m.forEach((v,i) => {
+            document.write(`<p>${v}</p>`);
+        })
+        }
+
+       
+    </script>
+</body>
+</html>
