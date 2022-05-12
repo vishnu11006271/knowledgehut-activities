@@ -9,17 +9,18 @@
 <body>
     <h2>Demo on Javascript collection</h2>
     <div>Enter products
-        <input type="text" id="name">
+        <input type="text" id="name" required>
         <button onclick="add()">Save</button><span id ="s1"></span>
         <br />
-        <button onclick="display()">Show set elements</button>
+        <hr />
+        <div>
+            <button onclick="display()">Show set items</button>
+        </div>
     </div>
-
-    
     <script type = "text/javascript">
         let m = new Set();
-        
-        
+        let ele1 = document.getElementById("items");
+        let ele = document.getElementById("main");
         function add(){
             let ele = document.getElementById("name");
             let s = document.getElementById("s1")
@@ -30,22 +31,30 @@
                 ele.value = '';
             }
             else{
-                s.innerHTML = "";
-                m.add(value);
                 
-                ele.value = '';
+                if(value == ''){
+                    s.innerHTML = "Must filled input field"; 
+                }
+                else{
+                    s.innerHTML = "";
+                    m.add(value);
+                    ele.value = '';
+                }
             }
             console.log("value: " +value);
             
         }
         function display(){
+            
             document.write(`<p>Size of map: ${m.size}</p>`);
+            document.write("<ol>");
             m.forEach((v,i) => {
-            document.write(`<p>${v}</p>`);
-        })
-        }
-
-       
+                
+                document.write(`<li>${v}</li>`);
+                
+            })
+            document.write("</ol>");
+        } 
     </script>
 </body>
 </html>
