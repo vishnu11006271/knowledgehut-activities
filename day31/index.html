@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Example on XMLHttpRequest</h1>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">Name</th>
+                <th rowspan="2">ID</th>
+                <th colspan="2">Address</th>
+            </tr>
+            <tr>
+                <th>City</th>
+                <th>Street</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="name"></td>
+                <td id="id"></td>
+                <td id="city"></td>
+                <td id="street"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="fetchData()">Fetch</button>
+    <div id = "main"></div>
+    <script type = 'text/javascript'>
+        function fetchData() {
+            let url = "https://jsonplaceholder.typicode.com/users";
+            let xhr = new XMLHttpRequest();
+            let ele = document.getElementById('main');
+            let name = document.getElementById('name');
+            let city = document.getElementById('city');
+            let street = document.getElementById('street');
+
+            xhr.open("GET", url, true);
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if(xhr.readyState == 4) {
+                    let data = xhr.responseText;
+                    let temp1 = "";
+                    let temp2 = "";
+                    let temp3 = "";
+                    let temp4 = "";
+                    let jsData = JSON.parse(data); //converts JSON to JS
+                    jsData.forEach((item) => {
+                        
+                        temp1 = `${temp1} <p> ${item.name}</p>` ;
+                        temp2 = `${temp2} <p> ${item.id}</p>`;
+                        temp3 = `${temp3} <p> ${item.address.city}</p>`;
+                        temp4 = `${temp4} <p> ${item.address.street}</p>`;
+                    });
+                    name.innerHTML = temp1;
+                    id.innerHTML = temp2;
+                    city.innerHTML = temp3;
+                    street.innerHTML = temp4;
+                    
+                }
+            }
+        }
+    </script>
+</body>
+</html>
