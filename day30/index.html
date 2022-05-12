@@ -9,52 +9,59 @@
 <body>
     <h2>Demo on Javascript collection</h2>
     <div>Enter products
-        <input type="text" id="name" required>
-        <button onclick="add()">Save</button><span id ="s1"></span>
+        <input type="text" id="name" autocomplete = "off" required>
+        <button onclick="add()">Save</button><span id ="s1" style="color: red"></span><span id="s2" style = "color: green"></span>
         <br />
         <hr />
         <div>
             <button onclick="display()">Show set items</button>
+            <div id="items"></div>
+            <div id="main"></div>
         </div>
     </div>
     <script type = "text/javascript">
         let m = new Set();
-        let ele1 = document.getElementById("items");
-        let ele = document.getElementById("main");
+        let e2 = document.getElementById("items");
+        let e1 = document.getElementById("main");
         function add(){
             let ele = document.getElementById("name");
-            let s = document.getElementById("s1")
+            let s = document.getElementById("s1");
+            let ss = document.getElementById("s2");
             let v = ele.value;
             let value = v.toLowerCase();
             if(m.has(value)){
                 s.innerHTML = "Already exist";
+                ss.innerHTML = "";
                 ele.value = '';
             }
             else{
                 
                 if(value == ''){
                     s.innerHTML = "Must filled input field"; 
+                    ss.innerHTML = "";
                 }
                 else{
-                    s.innerHTML = "";
+                    s.innerHTML = ""; 
+                    ss.innerHTML = "Item saved successfully";
                     m.add(value);
                     ele.value = '';
                 }
             }
-            console.log("value: " +value);
             
         }
         function display(){
             
-            document.write(`<p>Size of map: ${m.size}</p>`);
-            document.write("<ol>");
-            m.forEach((v,i) => {
-                
-                document.write(`<li>${v}</li>`);
-                
-            })
-            document.write("</ol>");
-        } 
+            e2.innerHTML = `<p>Size of map: ${m.size}</p>`;
+            let itemList=``;
+            for(let v of m){
+            itemList += `<li>${v}</li>`;
+            }
+            let setItems=`<ol>`+itemList+`</ol>`;
+            e1.innerHTML=setItems;
+            
+        }
+        console.log(m);
+         
     </script>
 </body>
 </html>
