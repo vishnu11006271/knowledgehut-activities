@@ -14,15 +14,15 @@
     <script type = 'text/babel'>
        function User(props) {
         return (<div>
-            <h3>Hello {props.name.name1}!</h3>
-            <h3>Age {props.name.age}!</h3>
+            <h3>Hello {props.person.name}!</h3>
+            <h3>Age {props.person.age}!</h3>
             </div>);
        }
        function Root() {
-           let obj = {name1:'Alex', age: '26'};
+           let obj = {name:'Alex', age: '26'};
            return (<div>
            <h2>App component rendering greetings</h2>
-            <User name = {obj} />
+            <User person = {obj} />
            </div>);
        }
        ReactDOM.render(<Root />, document.getElementById('root'));
