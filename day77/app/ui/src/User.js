@@ -192,16 +192,33 @@ export function ProfileLogin() {
     }
     if(isLoggedIn){
         // window.location.href = `/${users._id}`;
-        return (<div>
-                
+        return (<div className="container-fluid">
+            <h1 className="text-center">CONTACT MANAGEMENT SYSTEM</h1>
+            <br />
+            <div className="row">
+            <div className="col-3 bg-secondary" style={{ borderRadius: '25px'}}>
+                <h3>Name: {users.name}</h3>
+                <h3>Id: {users._id}</h3>
+            </div>
+            <div className="col-9">
+                <nav className="navbar navbar-dark bg-primary" style={{ backgroundColor: 'coral', borderRadius: '25px'}}>
+                <Link to = {`/${users._id}/dashboard`} className="navbar-brand">Dashboard</Link> | 
+                <Link to = {`/${users._id}/addcontact`} className="navbar-brand">Add contacts</Link> | 
+                <Link to = {`/${users._id}/showcontact`} className="navbar-brand">Show all contacts</Link> |
+                <Link to = "/search" className="navbar-brand">Search contact</Link> |
+                <Link to = "/logout" className="navbar-brand">Logout</Link> |
+                {/* <Link to = "/user/:id">DeleteUser</Link>  */}
+                </nav>
             <Routes>
-                <Route path = '/login' element = {<ProfileLogin user = {users} />} />
-            </Routes>
-                    
-                    
-                
+                <Route path = '/' element = {<LogInUser user = {users} />} />
+                <Route path = {`/${users._id}/showcontact`} element = {<ShowContact user = {users} />} />
+                <Route path = {`/${users._id}/addcontact`} element = {<StoreContact user = {users} />} />
+                <Route path = {`/${users._id}/dashboard`} element = {<Dashboard user = {users} />} />
+            </Routes>    
             <br />
             <input type = "button" value = "logout" className = "btn btn-primary" onClick= {handleLogout}></input>
+            </div>
+            </div>
             </div>
             );
     }
@@ -313,22 +330,15 @@ export function LogInUser(props) {
     
     <hr />
     <div>
-        <nav className="navbar navbar-dark bg-primary" style={{ backgroundColor: 'coral', borderRadius: '25px'}}>
-        <Link to = {`/login/dashboard`} className="navbar-brand">Dashboard</Link> | 
-        <Link to = "/login/addcontact" className="navbar-brand">Add contacts</Link> | 
-        <Link to = "/login/showcontact" className="navbar-brand">Show all contacts</Link> |
-        <Link to = "/search" className="navbar-brand">Search contact</Link> |
-        <Link to = "/logout" className="navbar-brand">Logout</Link> |
-        {/* <Link to = "/user/:id">DeleteUser</Link>  */}
-        </nav>
+        
     
      <Routes>
        {/* <Route path = "/logout" element = {window.location.href='/logout'} /> */}
        {/* <Route path = "/login/addcontact" element = {<StoreContact user = {props.user} />} /> */}
-       <Route path = "/login/addcontact" element = {<StoreContact user = {props.user} />} />
-       <Route path = "/login/showcontact" element = {<ShowContact user = {props.user} />} />
-       <Route path = "/" element = {<Dashboard user = {props.user}/>} />
-       <Route path = {`/login/${props.user._id}/dashboard`} element = {<Dashboard user = {props.user}/>} />
+       <Route path = {`/${props.user._id}/addcontact`} element = {<StoreContact user = {props.user} />} />
+       <Route path = {`/${props.user._id}/showcontact`} element = {<ShowContact user = {props.user} />} />
+       <Route path = '/' element = {<Dashboard user = {props.user}/>} />
+       <Route path = {`/${props.user._id}/dashboard`} element = {<Dashboard user = {props.user}/>} />
        <Route path = "/search" element = {<UpdateUser />} />
        {/* <Route path = "/user/:id" element = {<DeleteUser />} /> */}
      </Routes>
